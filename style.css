@@ -1,0 +1,168 @@
+/* -------------------------
+   Background Video Setup
+------------------------- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* -------------------------
+   Drape Setup
+------------------------- */
+.drape {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98); 
+    z-index: 1;
+    -webkit-mask: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 70%);
+    mask: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 70%);
+    pointer-events: none;
+    transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease;
+}
+
+/* -------------------------
+   Button Container
+------------------------- */
+.button-container {
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+/* -------------------------
+   Button Base Styles
+------------------------- */
+.glow-btn {
+    background: transparent !important;
+    color: #fff;
+    border: none;
+    padding: 60px 60px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: 
+        box-shadow 0.3s ease-in-out, 
+        transform 0.2s ease-in-out;
+    box-shadow: none;
+    z-index: 1;
+}
+
+/* Remove unwanted focus outlines */
+.glow-btn:focus,
+.glow-btn:focus-visible {
+    outline: none;
+}
+
+/* -------------------------
+   Hover & Active Behavior
+------------------------- */
+.glow-btn:hover,
+.glow-btn:active {
+    box-shadow: 
+        0 0 40px rgba(255, 0, 0, 1),
+        0 0 80px rgba(255, 0, 0, 0.9),
+        0 0 120px rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Inner Glow Effect */
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 50% 50%, 
+        transparent 70%, 
+        rgba(255, 0, 0, 0.5) 90%, 
+        rgba(255, 0, 0, 0.8) 95%
+    );
+    filter: blur(10px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: inherit;
+}
+
+/* Inner Glow Hover & Active */
+.glow-btn:hover::before,
+.glow-btn:active::before {
+    opacity: 1;
+    background: radial-gradient(
+        circle at 50% 50%, 
+        transparent 60%, 
+        rgba(255, 0, 0, 0.7) 85%, 
+        rgba(255, 0, 0, 1) 95%
+    );
+    filter: blur(15px);
+}
+
+/* Subtle Glow for Non-Hovered Tiles */
+.button-container:hover .glow-btn:not(:hover) {
+    box-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 30px rgba(255, 0, 0, 0.1);
+    transform: scale(1.0);
+    z-index: 2;
+}
+
+/* -------------------------
+   Transition Reset
+------------------------- */
+.glow-btn:not(:hover):not(:active) {
+    box-shadow: none;
+    transform: scale(1);
+}
+
+/* -------------------------
+   Mobile Compatibility (Tap Behavior)
+------------------------- */
+@media (hover: none) {
+    .glow-btn:active {
+        box-shadow: 
+            0 0 40px rgba(255, 0, 0, 1),
+            0 0 80px rgba(255, 0, 0, 0.9),
+            0 0 120px rgba(255, 0, 0, 0.8);
+        transform: scale(1.1);
+        z-index: 10;
+    }
+
+    .button-container .glow-btn:active ~ .glow-btn {
+        box-shadow: 
+            0 0 10px rgba(255, 0, 0, 0.3),
+            0 0 20px rgba(255, 0, 0, 0.2),
+            0 0 30px rgba(255, 0, 0, 0.1);
+        transform: scale(1.0);
+        z-index: 2;
+    }
+}
+
+/* Reset State on Tap Outside */
+.button-container {
+    touch-action: manipulation;
+}
