@@ -19,6 +19,8 @@
 
 /* -------------------------
    Drape Setup
+/* -------------------------
+   Drape Setup
 ------------------------- */
 .drape {
     position: fixed;
@@ -28,22 +30,21 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0.98); 
     z-index: 1;
-    -webkit-mask: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 70%);
-    mask: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 1) 70%);
+    -webkit-mask: radial-gradient(
+        circle 80px at var(--x, 50%) var(--y, 50%), 
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 20%, 
+        rgba(0, 0, 0, 1) 70%
+    );
+    mask: radial-gradient(
+        circle 80px at var(--x, 50%) var(--y, 50%), 
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 20%, 
+        rgba(0, 0, 0, 1) 70%
+    );
     pointer-events: none;
-    transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease;
-}
-
-/* -------------------------
-   Button Container
-------------------------- */
-.button-container {
-    position: absolute;
-    bottom: 20%;
-    right: 5%;
-    display: flex;
-    gap: 20px;
-    z-index: 10;
+    opacity: 0; /* Flashlight starts off */
+    transition: 
+        opacity 0.3s ease-in-out, 
+        mask-position 0.1s ease-in-out;
 }
 
 /* -------------------------
