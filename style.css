@@ -26,17 +26,17 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.99); 
+    background: rgba(0, 0, 0, 1); 
     z-index: 1;
     -webkit-mask: radial-gradient(
-        circle 120px at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 0, 0, 0) 35%, 
-        rgba(0, 0, 0, 1) 65%
+        circle 150px at var(--x, 50%) var(--y, 50%), 
+        rgba(0, 0, 0, 0) 40%, 
+        rgba(0, 0, 0, 1) 70%
     );
     mask: radial-gradient(
-        circle 120px at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 0, 0, 0) 35%, 
-        rgba(0, 0, 0, 1) 65%
+        circle 150px at var(--x, 50%) var(--y, 50%), 
+        rgba(0, 0, 0, 0) 40%, 
+        rgba(0, 0, 0, 1) 70%
     );
     pointer-events: none;
     opacity: 1;
@@ -92,13 +92,13 @@
 .button-container .glow-btn:hover {
     background: transparent !important;
     -webkit-mask: radial-gradient(
-        circle 100px at 50% 50%, 
-        rgba(0, 0, 0, 0) 30%, 
+        circle 120px at 50% 50%, 
+        rgba(0, 0, 0, 0) 40%, 
         rgba(0, 0, 0, 1) 70%
     );
     mask: radial-gradient(
-        circle 100px at 50% 50%, 
-        rgba(0, 0, 0, 0) 30%, 
+        circle 120px at 50% 50%, 
+        rgba(0, 0, 0, 0) 40%, 
         rgba(0, 0, 0, 1) 70%
     );
 }
