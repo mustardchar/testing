@@ -31,14 +31,14 @@
     -webkit-mask: radial-gradient(
         circle 120px at var(--x, 50%) var(--y, 50%),
         var(--flashlight-intensity, rgba(0, 0, 0, 0)) 20%,
-        rgba(0, 0, 0, 0.6) 50%,
-        rgba(0, 0, 0, 1) 70%
+        rgba(0, 0, 0, 0.3) 40%,
+        rgba(0, 0, 0, 0.7) 70%
     );
     mask: radial-gradient(
         circle 120px at var(--x, 50%) var(--y, 50%),
         var(--flashlight-intensity, rgba(0, 0, 0, 0)) 20%,
-        rgba(0, 0, 0, 0.6) 50%,
-        rgba(0, 0, 0, 1) 70%
+        rgba(0, 0, 0, 0.3) 40%,
+        rgba(0, 0, 0, 0.7) 70%
     );
     pointer-events: none;
     opacity: 1; /* Ensure the drape starts visible */
