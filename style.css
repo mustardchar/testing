@@ -26,22 +26,20 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.98);
     z-index: 1;
     -webkit-mask: radial-gradient(
-        circle 120px at var(--x, 50%) var(--y, 50%),
-        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 25%,
-        rgba(0, 0, 0, 0.8) 60%,
-        rgba(0, 0, 0, 1) 80%
+        circle 100px at var(--x, 50%) var(--y, 50%),
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%,
+        rgba(0, 0, 0, 1) 70%
     );
     mask: radial-gradient(
-        circle 120px at var(--x, 50%) var(--y, 50%),
-        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 25%,
-        rgba(0, 0, 0, 0.8) 60%,
-        rgba(0, 0, 0, 1) 80%
+        circle 100px at var(--x, 50%) var(--y, 50%),
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%,
+        rgba(0, 0, 0, 1) 70%
     );
     pointer-events: none;
-    opacity: 1; /* Ensure the drape starts visible */
+    opacity: 1;
     transition:
         mask-position 0.1s ease-in-out;
 }
@@ -51,7 +49,7 @@
 ------------------------- */
 .button-container {
     position: absolute;
-    top: 60%;
+    top: 60%; /* Adjusted downward */
     right: 5%;
     transform: translateY(-50%);
     display: flex;
