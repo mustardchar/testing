@@ -26,23 +26,36 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.98); 
+    background: rgba(0, 0, 0, 0.98);
     z-index: 1;
     -webkit-mask: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%), 
-        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%, 
+        circle 100px at var(--x, 50%) var(--y, 50%),
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%,
         rgba(0, 0, 0, 1) 70%
     );
     mask: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%), 
-        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%, 
+        circle 100px at var(--x, 50%) var(--y, 50%),
+        var(--flashlight-intensity, rgba(0, 0, 0, 0)) 30%,
         rgba(0, 0, 0, 1) 70%
     );
     pointer-events: none;
-    opacity: 0; /* Flashlight starts off */
-    transition: 
-        opacity 0.3s ease-in-out, 
+    opacity: 1; /* Ensure the drape starts visible */
+    transition:
         mask-position 0.1s ease-in-out;
+}
+
+/* -------------------------
+   Button Container
+------------------------- */
+.button-container {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    z-index: 10;
 }
 
 /* -------------------------
@@ -60,8 +73,8 @@
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
-    transition: 
-        box-shadow 0.3s ease-in-out, 
+    transition:
+        box-shadow 0.3s ease-in-out,
         transform 0.2s ease-in-out;
     box-shadow: none;
     z-index: 1;
@@ -78,7 +91,7 @@
 ------------------------- */
 .glow-btn:hover,
 .glow-btn:active {
-    box-shadow: 
+    box-shadow:
         0 0 60px rgba(255, 0, 0, 1),
         0 0 120px rgba(255, 0, 0, 0.9),
         0 0 180px rgba(255, 0, 0, 0.8);
@@ -95,9 +108,9 @@
     width: 100%;
     height: 100%;
     background: radial-gradient(
-        circle at 50% 50%, 
-        transparent 65%, 
-        rgba(255, 0, 0, 0.5) 85%, 
+        circle at 50% 50%,
+        transparent 65%,
+        rgba(255, 0, 0, 0.5) 85%,
         rgba(255, 0, 0, 0.8) 95%
     );
     filter: blur(12px);
@@ -112,28 +125,12 @@
 .glow-btn:active::before {
     opacity: 1;
     background: radial-gradient(
-        circle at 50% 50%, 
-        transparent 60%, 
-        rgba(255, 0, 0, 0.7) 85%, 
+        circle at 50% 50%,
+        transparent 60%,
+        rgba(255, 0, 0, 0.7) 85%,
         rgba(255, 0, 0, 1) 95%
     );
     filter: blur(15px);
-}
-
-/* -------------------------
-   Flashlight Adjustment on Hover
-------------------------- */
-.button-container .glow-btn:hover ~ .drape {
-    -webkit-mask: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 0, 0, 0.2) 30%, 
-        rgba(0, 0, 0, 1) 70%
-    );
-    mask: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 0, 0, 0.2) 30%, 
-        rgba(0, 0, 0, 1) 70%
-    );
 }
 
 /* -------------------------
@@ -149,7 +146,7 @@
 ------------------------- */
 @media (hover: none) {
     .glow-btn:active {
-        box-shadow: 
+        box-shadow:
             0 0 50px rgba(255, 0, 0, 1),
             0 0 100px rgba(255, 0, 0, 0.9),
             0 0 150px rgba(255, 0, 0, 0.8);
@@ -158,7 +155,7 @@
     }
 
     .button-container .glow-btn:active ~ .glow-btn {
-        box-shadow: 
+        box-shadow:
             0 0 10px rgba(255, 0, 0, 0.3),
             0 0 20px rgba(255, 0, 0, 0.2),
             0 0 30px rgba(255, 0, 0, 0.1);
@@ -170,4 +167,4 @@
 /* Reset State on Tap Outside */
 .button-container {
     touch-action: manipulation;
-}
+} 
