@@ -62,9 +62,15 @@
     overflow: hidden;
     transition: 
         box-shadow 0.3s ease-in-out, 
-        transform 0.2s ease-in-out;
+        transform 0.4s ease-in-out;
     box-shadow: none;
     z-index: 1;
+}
+
+.glow-btn span {
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
 }
 
 /* Remove unwanted focus outlines */
@@ -76,14 +82,14 @@
 /* -------------------------
    Hover & Active Behavior
 ------------------------- */
-.glow-btn:hover,
-.glow-btn:active {
+.glow-btn:hover {
     box-shadow: 
         0 0 60px rgba(255, 0, 0, 1),
         0 0 120px rgba(255, 0, 0, 0.9),
         0 0 180px rgba(255, 0, 0, 0.8);
-    transform: scale(1.1);
+    transform: scale(1.05);
     z-index: 10;
+    transition: box-shadow 0.4s ease-in-out, transform 0.3s ease-in-out;
 }
 
 /* -------------------------
@@ -109,6 +115,7 @@
 .glow-btn:not(:hover):not(:active) {
     box-shadow: none;
     transform: scale(1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 /* -------------------------
